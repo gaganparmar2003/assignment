@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Menu</title>
+    <link rel="stylesheet" href="pizza.css">
+</head>
+
+<body>
+    <header>
+        <h1>Beach Pizza </h1>
+    </header>
+
+    <!-- Navigation bar  -->
+
+    <div class="navbar">
+        <div class="topnav">
+            <a class="active" href="cart.html">Cart</a>
+            <a class="active" href="#Browse">Pizza</a>
+            <a class="active" href="drink.html">Drink</a>
+            <a class="active" href="dessert.html">Dessert</a>
+            <a class="active" href="sides.html">Sides</a>
+        </div>
+
+        <h2>Total Price: <span id="totalPrice">0</span> NZD</h2>
+
+    </div>
+
+
+  <div class="pizza">
+    <h2> Margherita</h2>
+    <img src="photos/magh.jfif" alt="Pizza 1 - Margherita ">
+    <p>Pizza Price:</p>
+    <div>
+        <span class="price-label">Small: $8</span>
+        <button class="quantity-button" onclick="addToCart('Small Margherita', 8, 'quantity-Small')">+</button>
+        <span class="item-quantity" id="quantity-Small">0</span>
+        <button class="quantity-button" onclick="removeFromCart('Small Margherita', 8, 'quantity-Small')">-</button>
+    </div>
+    <div>
+        <span class="price-label">Medium: $12</span>
+        <button class="quantity-button" onclick="addToCart('Medium Margherita', 12, 'quantity-Medium')">+</button>
+        <span class="item-quantity" id="quantity-Medium">0</span>
+        <button class="quantity-button" onclick="removeFromCart('Medium Margherita', 12, 'quantity-Medium')">-</button>
+    </div>
+    <div>
+        <span class="price-label">Large: $16</span>
+        <button class="quantity-button" onclick="addToCart('Large Margherita', 16, 'quantity-Large')">+</button>
+        <span class="item-quantity" id="quantity-Large">0</span>
+        <button class="quantity-button" onclick="removeFromCart('Large Margherita', 16, 'quantity-Large')">-</button>
+    </div>
+</div>
+
+<div class="pizza">
+  <h2> Hawaiian</h2>
+  <img src="photos/hawa.jpg" alt="Pizza 1 - Hawananin">
+  <p>Pizza Price:</p>
+  <div>
+      <span class="price-label">Small: $8</span>
+      <button class="quantity-button" onclick="addToCart('Small Hawananin', 8, 'quantity-Small-Hawananin')">+</button>
+      <span class="item-quantity" id="quantity-Small-Hawananin">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Small Hawananin', 8, 'quantity-Small-Hawananin')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Medium: $12</span>
+      <button class="quantity-button" onclick="addToCart('Medium Hawananin', 12, 'quantity-Medium-Hawananin')">+</button>
+      <span class="item-quantity" id="quantity-Medium-Hawananin">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Medium Hawananin', 12, 'quantity-Medium-Hawananin')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Large: $16</span>
+      <button class="quantity-button" onclick="addToCart('Large Hawananin', 16, 'quantity-Large-Hawananin')">+</button>
+      <span class="item-quantity" id="quantity-Large-Hawananin">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Large Hawananin', 16, 'quantity-Large-Hawananin')">-</button>
+  </div>
+</div>
+
+<div class="pizza">
+  <h2> chicken</h2>
+  <img src="photos/chicken.jfif" alt="Pizza 1 - chicken">
+  <p>Pizza Price:</p>
+  <div>
+      <span class="price-label">Small: $8</span>
+      <button class="quantity-button" onclick="addToCart('Small chicken', 8, 'quantity-Small-chicken')">+</button>
+      <span class="item-quantity" id="quantity-Small-chicken">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Small chicken', 8, 'quantity-Small-chicken')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Medium: $12</span>
+      <button class="quantity-button" onclick="addToCart('Medium chicken', 12, 'quantity-Medium-chicken')">+</button>
+      <span class="item-quantity" id="quantity-Medium-chicken">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Medium chicken', 12, 'quantity-Medium-chicken')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Large: $16</span>
+      <button class="quantity-button" onclick="addToCart('Large chicken', 16, 'quantity-Large-chicken')">+</button>
+      <span class="item-quantity" id="quantity-Large-Chicken">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Large chicken', 16, 'quantity-Large-chicken')">-</button>
+  </div>
+</div>
+
+<div class="pizza">
+  <h2> Pepporoni</h2>
+  <img src="photos/pep.jpg" alt="Pizza 1 - Pepporoni">
+  <p>Pizza Price:</p>
+  <div>
+      <span class="price-label">Small: $8</span>
+      <button class="quantity-button" onclick="addToCart('Small Pepporoni', 8, 'quantity-Small-Pepporoni')">+</button>
+      <span class="item-quantity" id="quantity-Small-Pepporoni">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Small Pepporoni', 8, 'quantity-Small-Pepporoni')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Medium: $12</span>
+      <button class="quantity-button" onclick="addToCart('Medium Pepporoni', 12, 'quantity-Medium-Pepporoni')">+</button>
+      <span class="item-quantity" id="quantity-Medium-Pepporoni">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Medium Pepporoni', 12, 'quantity-Medium-Pepporoni')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Large: $16</span>
+      <button class="quantity-button" onclick="addToCart('Large Pepporoni', 16, 'quantity-Large-Pepporoni')">+</button>
+      <span class="item-quantity" id="quantity-Large-Pepporoni">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Large Pepporoni', 16, 'quantity-Large-Pepporoni')">-</button>
+  </div>
+</div>
+
+<div class="pizza">
+  <h2> Zingy jesty</h2>
+  <img src="photos/vege.jfif" alt="Pizza 1 - Zingy">
+  <p>Pizza Price:</p>
+  <div>
+      <span class="price-label">Small: $8</span>
+      <button class="quantity-button" onclick="addToCart('Small Zingy', 8, 'quantity-Small-Zingy')">+</button>
+      <span class="item-quantity" id="quantity-Small-Zingy">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Small Pepporoni', 8, 'quantity-Small-Zingy')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Medium: $12</span>
+      <button class="quantity-button" onclick="addToCart('Medium Zingy', 12, 'quantity-Medium-Zingy')">+</button>
+      <span class="item-quantity" id="quantity-Medium-Zingy">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Medium Zingy', 12, 'quantity-Medium-Zingy')">-</button>
+  </div>
+  <div>
+      <span class="price-label">Large: $16</span>
+      <button class="quantity-button" onclick="addToCart('Large Zingy', 16, 'quantity-Large-Zingy')">+</button>
+      <span class="item-quantity" id="quantity-Large-Zingy">0</span>
+      <button class="quantity-button" onclick="removeFromCart('Large Zingy', 16, 'quantity-Large-Zingy')">-</button>
+  </div>
+</div>
+
+
+<div id="cart-section">
+    <h2>Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+</div>
+
+ <script>
+    const cartItems = {};
+    let cartTotal = 0;
+
+    function addToCart(itemName, price, quantityElementId) {
+        if (!cartItems[itemName]) {
+            cartItems[itemName] = { quantity: 0, price };
+        }
+        cartItems[itemName].quantity++;
+        cartTotal += price;
+        updateCart();
+        updateTotalPrice(); // Add this line to update the total price in the navigation bar
+        document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+    }
+
+    function removeFromCart(itemName, price, quantityElementId) {
+        if (cartItems[itemName] && cartItems[itemName].quantity > 0) {
+            cartItems[itemName].quantity--;
+            cartTotal -= price;
+            updateCart();
+            updateTotalPrice(); // Add this line to update the total price in the navigation bar
+            document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        }
+    }
+
+    function updateCart() {
+        const cartItemsElement = document.getElementById("cart-items");
+        cartItemsElement.innerHTML = "";
+
+        for (const itemName in cartItems) {
+            const item = cartItems[itemName];
+            if (item.quantity > 0) {
+                const li = document.createElement("li");
+                li.textContent = `${itemName} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            }
+        }
+
+        const cartTotalElement = document.getElementById("cart-total");
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    }
+
+    function updateTotalPrice() {
+        const totalPriceElement = document.getElementById("totalPrice");
+        totalPriceElement.textContent = cartTotal.toFixed(2);
+    }
+</script> 
+</body>
+
+</html>
+

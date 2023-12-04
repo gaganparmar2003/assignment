@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dessert Menu</title>
+    <link rel="stylesheet" href="desert.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="topnav">
+            <a class="active" href="cart.html">Cart</a>
+            <a class="active" href="pizza.html">Pizza</a>
+            <a class="active" href="drink.html">Drink</a>
+            <a class="active" href="dessert.html">Dessert</a>
+            <a class="active" href="sides.html">Sides</a>
+        </div>
+
+        <h2> Desserts </h2>
+
+        <h2>Total Price: <span id="totalPrice">0</span> </h2>
+
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/dessert1.jpg" alt="Brownie">
+        <div class="menu-item-description">
+            <h2>Brownie</h2>
+            <p>Brownie</p>
+            <p>Price: $5.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('Brownie', 5.49,'quantity-Brownie')">+</button>
+            <span class="item-quantity" id="quantity-Brownie">0</span>
+            <button class="quantity-button" onclick="removeFromCart('Brownie', 5.49,'quantity-Brownie')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/dessert2.jpg" alt="Cheesecake">
+        <div class="menu-item-description">
+            <h2>Cheesecake</h2>
+            <p>Cheesecake</p>
+            <p>Price: $5.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('Cheesecake', 5.49,'quantity-Cheesecake')">+</button>
+            <span class="item-quantity" id="quantity-Cheesecake">0</span>
+            <button class="quantity-button" onclick="removeFromCart('Cheesecake', 5.49,'quantity-Cheesecake')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/dessert3.jpg" alt="Tiramisu">
+        <div class="menu-item-description">
+            <h2>Tiramisu</h2>
+            <p>Tiramisu</p>
+            <p>Price: $7.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('Tiramisu', 7.49 , 'quantity-Tiramisu')">+</button>
+            <span class="item-quantity" id="quantity-Tiramisu">0</span>
+            <button class="quantity-button" onclick="removeFromCart('Tiramisu', 7.49,'quantity-Tiramisu')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/dessert4.jpg" alt="Banana Split">
+        <div class="menu-item-description">
+            <h2>Banana Split</h2>
+            <p>Banana Split </p>
+            <p>Price: $7.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('Banana Split', 7.49,'quantity-Banana-Split')">+</button>
+            <span class="item-quantity" id="quantity-Banana-Split">0</span>
+            <button class="quantity-button" onclick="removeFromCart('Banana Split', 7.49,'quantity-Banana-Split')">-</button>
+        </div>
+    </div>
+
+    <!-- a navigation bar for the add to cart system with the total-->
+    <div id="cart">
+        <img src="photos/cart.jpg" alt="Cart">
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+
+    <script>
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
+        let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0;
+
+        function addToCart(itemName, price, quantityElementId) {
+            if (!cartItems[itemName]) {
+                cartItems[itemName] = { quantity: 0, price };
+            }
+            cartItems[itemName].quantity++;
+            cartTotal += price;
+            updateCart();
+            updateTotalPrice();
+            saveToLocalStorage();
+            document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+        }
+
+        function removeFromCart(itemName, price, quantityElementId) {
+            if (cartItems[itemName] && cartItems[itemName].quantity > 0) {
+                cartItems[itemName].quantity--;
+                cartTotal -= price;
+                updateCart();
+                updateTotalPrice();
+                saveToLocalStorage();
+                document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+            }
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById("cart-items");
+            cartItemsElement.innerHTML = "";
+
+            for (const itemName in cartItems) {
+                const item = cartItems[itemName];
+                if (item.quantity > 0) {
+                    const li = document.createElement("li");
+                    li.textContent = `${itemName} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+                    cartItemsElement.appendChild(li);
+                }
+            }
+
+            const cartTotalElement = document.getElementById("cart-total");
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+
+        function updateTotalPrice() {
+            const totalPriceElement = document.getElementById("totalPrice");
+            totalPriceElement.textContent = cartTotal.toFixed(2);
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            localStorage.setItem('cartTotal', cartTotal.toFixed(2));
+        }
+    </script>
+</body>
+
+</html>
+

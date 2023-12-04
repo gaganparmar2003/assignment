@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sides Menu</title>
+    <link rel="stylesheet" href="sides.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="topnav">
+            <a class="active" href="cart.html">Cart</a>
+            <a class="active" href="pizza.html">Pizza</a>
+            <a class="active" href="drink.html">Drink</a>
+            <a class="active" href="dessert.html">Dessert</a>
+            <a class="active" href="sides.html">Sides</a>
+        </div>
+
+        <h2> Desserts </h2>
+
+        <h2>Total Price: <span id="totalPrice">0</span> </h2>
+
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/garlic.jfif" alt="garlic">
+        <div class="menu-item-description">
+            <h2>Garlic Bread</h2>
+            <p>Garlic Bread</p>
+            <p>Price: $8.49</p>
+        </div>
+        <!-- this class is used for adding and removing from cart-->
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('garlic', 8.49,'quantity-garlic')">+</button>
+            <span class="item-quantity" id="quantity-garlic">0</span>
+            <button class="quantity-button" onclick="removeFromCart('garlic', 8.49,'quantity-garlic')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/fries.jfif" alt="fries">
+        <div class="menu-item-description">
+            <h2>Fries</h2>
+            <p>Fries</p>
+            <p>Price: $6.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('fries', 6.49,'quantity-fries')">+</button>
+            <span class="item-quantity" id="quantity-fries">0</span>
+            <button class="quantity-button" onclick="removeFromCart('fries', 6.49,'quantity-fries')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/wedges.jfif" alt="wedges">
+        <div class="menu-item-description">
+            <h2>Wedges</h2>
+            <p>Wedges</p>
+            <p>Price: $7.49</p>
+        </div>
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('wedges', 7.49 , 'quantity-wedges')">+</button>
+            <span class="item-quantity" id="quantity-wedges">0</span>
+            <button class="quantity-button" onclick="removeFromCart('wedges', 7.49,'quantity-wedges')">-</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="photos/wings.jfif" alt="wings">
+        <div class="menu-item-description">
+            <h2> Wicked wings</h2>
+            <p>Wicked wings </p>
+            <p>Price: $7.49</p>
+        </div>
+        <!-- this class is used for adding and removing from cart-->
+        <div class="quantity-buttons">
+            <button class="quantity-button" onclick="addToCart('wings', 7.49,'quantity-wings')">+</button>
+            <span class="item-quantity" id="quantity-wings">0</span>
+            <button class="quantity-button" onclick="removeFromCart('wings', 7.49,'quantity-wings')">-</button>
+        </div>
+    </div>
+
+   <!-- a navigation bar for the add to cart system with the total-->
+<div id="cart">
+    <img src="photos/cart.jpg" alt="Cart">
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+</div>
+
+<div id="cart-section">
+    <h2>Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+</div>
+
+<script>
+    const cartItems = {};
+    let cartTotal = 0;
+
+    function addToCart(itemName, price, quantityElementId) {
+        if (!cartItems[itemName]) {
+            cartItems[itemName] = { quantity: 0, price };
+        }
+        cartItems[itemName].quantity++;
+        cartTotal += price;
+        updateCart();
+        updateTotalPrice(); // Add this line to update the total price in the navigation bar
+        document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+    }
+
+    function removeFromCart(itemName, price, quantityElementId) {
+        if (cartItems[itemName] && cartItems[itemName].quantity > 0) {
+            cartItems[itemName].quantity--;
+            cartTotal -= price;
+            updateCart();
+            updateTotalPrice(); // Add this line to update the total price in the navigation bar
+            document.getElementById(quantityElementId).textContent = cartItems[itemName].quantity;
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        }
+    }
+
+    function updateCart() {
+        const cartItemsElement = document.getElementById("cart-items");
+        cartItemsElement.innerHTML = "";
+
+        for (const itemName in cartItems) {
+            const item = cartItems[itemName];
+            if (item.quantity > 0) {
+                const li = document.createElement("li");
+                li.textContent = `${itemName} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            }
+        }
+
+        const cartTotalElement = document.getElementById("cart-total");
+        cartTotalElement.textContent = cartTotal.toFixed(2);
+    }
+
+    function updateTotalPrice() {
+        const totalPriceElement = document.getElementById("totalPrice");
+        totalPriceElement.textContent = cartTotal.toFixed(2);
+    }
+</script>
+</body>
+
+</html>
+

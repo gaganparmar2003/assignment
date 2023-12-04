@@ -1,0 +1,83 @@
+body {
+    background-color: orange;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+}
+.topnav {
+    overflow: hidden;
+    text-align: center;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.pizza {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.pizza h2 {
+    color: orange;
+}
+
+.pizza img {
+    width: 300px;
+    height: auto;
+    margin-right: 15px; /* Adjust the margin as needed */
+}
+
+.pizza-options {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.price-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.size-button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.size-button.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
